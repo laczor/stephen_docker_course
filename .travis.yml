@@ -31,6 +31,7 @@ deploy:
   #Deploy the application, only when master has been changed in the git repository!
   on:
     branch: master
-
-
-
+  # ENVIROMENTAL VARIABLES!!
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
