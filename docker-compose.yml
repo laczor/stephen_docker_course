@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    build:
+      #From where we would like to build
+      context: .
+      # Specify the Dockerfile to use
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # This is the bookmarking of the folder (not to overwrite it)
+      - /app/node_modules
+      # map the files inside the docker container
+      - .:/app
+  test:
+    build:
+      #From where we would like to build
+      context: .
+      # Specify the Dockerfile to use
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # This is the bookmarking of the folder (not to overwrite it)
+      - /app/node_modules
+      # map the files inside the docker container
+      - .:/app
+    command: ["npm","run","test"]
+
+
