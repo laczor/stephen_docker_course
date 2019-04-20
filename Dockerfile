@@ -13,4 +13,4 @@ FROM nginx
 EXPOSE 80
 
 # It will be served automatically when it will starts up!
-COPY --from=builder /app/build /user/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
