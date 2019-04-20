@@ -15,3 +15,22 @@ before_install:
 # We have to tell the test to exit if everything went well!
 script:
   - docker run steve/stephen_docker_course npm run test -- --coverage
+
+# We will tell Travis how to deploy the application!
+deploy:
+  # Travis is configured by default with a bunch of service providers
+  provider: elasticbeanstalk
+  # Where you beanstalk or service is created
+  region: "us-east-1"
+  app: "stephen_docker_course"
+  env: "StephenDockerCourse-env"
+  # Physical storage of the files, for beanstalk it is automatically generated
+  bucket_name: "elasticbeanstalk-us-east-1-748397365890"
+  # It should be names as your app
+  bucket_path: "stephen_docker_course"
+  #Deploy the application, only when master has been changed in the git repository!
+  on:
+    branch: master
+
+
+
