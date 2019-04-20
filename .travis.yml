@@ -1,0 +1,17 @@
+# We need superuser permissions!
+
+sudo: required
+# Tells travis, that we need a copy of docker to be ready
+services:
+  - docker
+# Some series of tasks prior test or deployment
+before_install:
+# Use the Dockerfile.dev from the current directory "."
+# Tag the image, so we can easily reference it!
+  - docker build -f -t steve/stephen_docker_course  Dockerfile.dev .
+
+# Series of tasks, to execute the test
+# (if travis, will recieve other the 0 exit code, it assumes that it is failed)
+# We have to tell the test to exit if everything went well! 
+script:
+  - docker run steve/stephen_docker_course npm run test -- --coverage
